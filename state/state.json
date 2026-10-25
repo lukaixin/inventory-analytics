@@ -1,8 +1,8 @@
 {
   "project": "inventory-v7",
   "phase": "neutral-name-and-open-source",
-  "state": "FINAL_GATE",
-  "status": "IN_REVIEW",
+  "state": "CLOSE",
+  "status": "COMPLETED",
   "frozen_contracts": [
     "docs/V6_RECONSTRUCTION_CONTRACT.md",
     "docs/DATA_CONTRACT.md",
@@ -15,9 +15,7 @@
     "../outputs",
     "../work"
   ],
-  "active_tasks": [
-    "OSS-G01 final public release gate"
-  ],
+  "active_tasks": [],
   "open_findings": [
     {
       "id": "Q01-F03",
@@ -37,12 +35,14 @@
     }
   ],
   "repair_round": 3,
-  "last_gate": "OSS_QA_PASS_WITH_FINDINGS",
-  "next_allowed_action": "Push neutral branding and MIT while private, then change visibility to PUBLIC and verify",
+  "last_gate": "OSS_FINAL_PASS_WITH_FINDINGS",
+  "next_allowed_action": "Public MIT repository ready; follow real-data onboarding for authorized private inputs",
   "database": "DuckDB",
   "future_database": "PostgreSQL",
   "protected_files_verified": 142,
-  "delivery_decision": "PENDING_PUBLIC_MIT_RELEASE",
+  "delivery_decision": "APPROVE_PUBLIC_MIT_RELEASE",
   "repository_url": "https://github.com/lukaixin/inventory-analytics",
-  "branch": "main"
+  "branch": "main",
+  "repository_visibility": "PUBLIC",
+  "license": "MIT"
 }

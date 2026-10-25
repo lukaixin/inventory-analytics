@@ -99,3 +99,6 @@ QA与Final Gate均PASS WITH FINDINGS，Root批准本地结构与候选规则。6
 
 ### OSS INTAKE / QA
 用户授权中性仓库名及公开开源，并明确MIT。先在PRIVATE状态更名inventory-analytics，更新origin；Worker仅改页面/API可见名称和npm根元数据，build/compile通过且依赖锁定未变。Root同步README/AGENTS/文档链接、去除当前树项目品牌标签并准备标准MITLICENSE，真实/私有/runtime/evidence仍排除。公开前QA检查当前差异及原提交敏感内容，不做无授权历史重写。
+
+### OSS CLOSE
+QA及Final Gate均PASS WITH FINDINGS。已推送中性品牌与MIT，随后将lukaixin/inventory-analytics切换PUBLIC。GitHub读回PUBLIC、MIT、main，80文件边界正确且远端HEAD一致；当前树旧品牌0命中。保留既有历史，未做force push；不改变原始/私有数据及演示版本。Root完成闭环状态后再次推送并核对HEAD，详细记录位于本机ignored evidence。所有审查/执行代理已完成idle，无后续自动调度。

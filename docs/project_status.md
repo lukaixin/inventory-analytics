@@ -51,4 +51,4 @@ UI-P01最终独立复核：PASS（evidence/ui-polish/independent-review.md）。
 用户授权新建GitHub工程并推送，明确这次继续保留演示；真实接入后按交接清单移除正式路径mock。新增REAL_DATA_ONBOARDING与REQUIREMENTS_EVIDENCE、仓库验证摘要，根/模块AGENTS随源码移交；忽略所有本地evidence、配置、运行库、真实资料及备份。干净暂存源码导出中迁移、27passed/1可选历史skip、npmci/build通过。独立QA及Final Gate均PASS WITH FINDINGS。已创建并推送私有仓库https://github.com/lukaixin/inventory-analytics，默认main；初始源码提交bc56b749f32ef891475c741db159f524073eeb44。远端79文件及三级AGENTS/交接文档齐全，未包含私有/运行资料。
 
 ## 中性名称与MIT开源（2026-10-25）
-用户明确要求GitHub工程名不含企业标识，并公开开源，随后选择MIT。仓库已更名inventory-analytics，README/页面/API/npm项目标题通用化，MIT许可已准备；当前仍PRIVATE，等待公开前核验。此前演示保留和真实数据不入Git的要求继续生效。本地目录不迁移，现有Git历史不强制改写。
+用户明确要求GitHub工程名不含企业标识，并公开开源，随后选择MIT。仓库已更名inventory-analytics，README/页面/API/npm项目标题通用化，MIT许可已准备；公开前独立QA及Final Gate均PASS WITH FINDINGS；已推送并切换PUBLIC，GitHub读回确认MIT/main，远端文件范围为80个源码/文档/合成夹具，无私有运行资料。此前演示保留和真实数据不入Git的要求继续生效。本地目录不迁移，现有Git历史不强制改写。
