@@ -1,0 +1,42 @@
+{
+  "generator": "scripts/generate_management_demo.py",
+  "schema_version": "management_demo_manifest_v1",
+  "evidence_level": "SYNTHETIC_MANAGEMENT_DEMO",
+  "payload_filename": "management-demo.json",
+  "payload_sha256": "1d114e72244a630b35f86e46a8916930068b33e3e5b976e4c3a54d6fbb0a5b1c",
+  "deterministic": true,
+  "snapshot_manifest": {
+    "YEAR_START": "demo-2025-12-31",
+    "MID_YEAR": "demo-2026-05-31",
+    "MONTH_START": "demo-2026-09-30",
+    "CURRENT": "demo-2026-10-22"
+  },
+  "counts": {
+    "snapshot_count": 11,
+    "inventory_fact_count": 792,
+    "metric_fact_count": 1232,
+    "target_count": 9,
+    "forecast_count": 16,
+    "current_point_inventory": "4.9788",
+    "current_unknown_amount_count": 0,
+    "partial_snapshot": "demo-2026-05-31"
+  },
+  "validation": {
+    "status": "passed",
+    "checks": [
+      "alias dates",
+      "unique fact keys",
+      "null versus zero",
+      "mixed quantity units",
+      "current point inventory reconciliation",
+      "target and forecast match keys",
+      "risk policy boundary"
+    ]
+  },
+  "limitations": [
+    "全部数值为确定性合成演示，不代表真实 V6、ERP 或经营数据。",
+    "周转、平均库存和发货成本为预计算演示事实，不可由明细重算。",
+    "2026-05-31 有一条金额未知事实，相关人口覆盖状态为 partial。",
+    "原材料和半成品风险阈值未知；仅成品配置 >60 天演示规则。"
+  ]
+}

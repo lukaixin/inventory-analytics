@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "domain": "inventory_detail",
+  "series": {
+    "code": "synthetic-upload-demo",
+    "title": "合成导入示例"
+  },
+  "evidence_level": "SYNTHETIC_DEMO",
+  "version_label": "上传示例 v1",
+  "snapshots": [
+    {
+      "key": "demo-2026-09-09",
+      "label": "2026-09-09",
+      "exact_date": "2026-09-09",
+      "ordinal": 4
+    }
+  ],
+  "records": [
+    {
+      "snapshot_key": "demo-2026-09-09",
+      "record_key": "DEMO-R005-WH02",
+      "material_code": "DEMO-M005",
+      "material_description": "演示物料 005",
+      "pdt": "DEMO-PDT-A",
+      "customer": "DEMO-客户06",
+      "project": "DEMO-项目06",
+      "material_category": "半成品",
+      "subinventory_code": "DEMO-WH02",
+      "quantity": "229.00",
+      "unit_cost": "64.75",
+      "total_cost_amount": "14827.75"
+    },
+    {
+      "snapshot_key": "demo-2026-09-09",
+      "record_key": "DEMO-R006-WH03",
+      "material_code": "DEMO-M006",
+      "material_description": "演示物料 006",
+      "pdt": "DEMO-PDT-A",
+      "customer": "DEMO-客户01",
+      "project": "DEMO-项目07",
+      "material_category": "成品",
+      "subinventory_code": "DEMO-WH03",
+      "quantity": "251.00",
+      "unit_cost": "76.25",
+      "total_cost_amount": "19138.75"
+    },
+    {
+      "snapshot_key": "demo-2026-09-09",
+      "record_key": "DEMO-R007-WH04",
+      "material_code": "DEMO-M007",
+      "material_description": "演示物料 007",
+      "pdt": "DEMO-PDT-B",
+      "customer": "DEMO-客户02",
+      "project": "DEMO-项目08",
+      "material_category": "成品",
+      "subinventory_code": "DEMO-WH04",
+      "quantity": "252.00",
+      "unit_cost": "87.75",
+      "total_cost_amount": "22113.00"
+    }
+  ]
+}

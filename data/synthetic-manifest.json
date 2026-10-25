@@ -1,0 +1,83 @@
+{
+  "generator": "data/generate_synthetic.py",
+  "evidence_level": "SYNTHETIC_DEMO",
+  "unit": "演示元",
+  "synthetic": {
+    "filename": "synthetic-inventory.json",
+    "sha256": "77b683612dd7382dda4cdffe2dd999c04ab50daa9cc3a3c506b19b1cfa09e672",
+    "row_count": 246,
+    "snapshots": [
+      {
+        "snapshot_key": "demo-2026-01-01",
+        "row_count": 60,
+        "known_total": "3763516.50",
+        "unknown_amount_count": 0,
+        "zero_amount_count": 0,
+        "category_counts": {
+          "原材料": 20,
+          "半成品": 21,
+          "成品": 19
+        }
+      },
+      {
+        "snapshot_key": "demo-2026-06-30",
+        "row_count": 62,
+        "known_total": "4177832.50",
+        "unknown_amount_count": 0,
+        "zero_amount_count": 0,
+        "category_counts": {
+          "原材料": 20,
+          "半成品": 21,
+          "成品": 21
+        }
+      },
+      {
+        "snapshot_key": "demo-2026-09-01",
+        "row_count": 62,
+        "known_total": "4625443.25",
+        "unknown_amount_count": 0,
+        "zero_amount_count": 1,
+        "category_counts": {
+          "半成品": 21,
+          "成品": 21,
+          "原材料": 20
+        }
+      },
+      {
+        "snapshot_key": "demo-2026-09-09",
+        "row_count": 62,
+        "known_total": "4970393.50",
+        "unknown_amount_count": 1,
+        "zero_amount_count": 0,
+        "category_counts": {
+          "半成品": 20,
+          "成品": 21,
+          "原材料": 21
+        }
+      }
+    ]
+  },
+  "import_example": {
+    "filename": "import-example.json",
+    "sha256": "982f35571241ab77bfa5b6df109de046a3321ca51d5b55f66e7463c1701943ac",
+    "row_count": 3,
+    "snapshots": [
+      {
+        "snapshot_key": "demo-2026-09-09",
+        "row_count": 3,
+        "known_total": "56079.50",
+        "unknown_amount_count": 0,
+        "zero_amount_count": 0,
+        "category_counts": {
+          "半成品": 1,
+          "成品": 2
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "全部为合成样例，不代表真实客户、组织、物料或业务金额。",
+    "最终快照有1条金额未知，known_total只能称为已知金额小计。",
+    "未生成周转、发货成本、MWD、库龄或风险评级。"
+  ]
+}

@@ -1,0 +1,67 @@
+export type Envelope<T> = { data: T; meta?: Meta };
+export type Meta = { version_id?: string; evidence_level?: string; limitations?: string[]; access_note?: string };
+export type Dataset = { id:string; code:string; title:string; kind:'legacy'|'inventory_detail'|'management_demo'; current_version_id?:string|null };
+export type Version = { id:string; label:string; evidence_level:string; schema_version:string; created_at:string; source_file_id?:string|null; limitations?:string[] };
+const BASE = import.meta.env.VITE_API_BASE_URL || '/api/v1';
+export class ApiError extends Error { constructor(public status:number, message:string){super(message)} }
+export function params(input: Record<string, string | number | boolean | null | undefined>) { const p=new URLSearchParams(); Object.entries(input).forEach(([k,v])=>v!==undefined&&v!==null&&v!==''&&p.set(k,String(v))); return p.toString(); }
+export async function api<T>(path:string, init?:RequestInit):Promise<Envelope<T>> { const res=await fetch(`${BASE}${path}`, { ...init, headers: { Accept:'application/json', ...(init?.headers||{}) }}); let body: unknown; try { body=await res.json(); } catch { throw new ApiError(res.status, '服务返回了无法识别的内容'); } if(!res.ok) throw new ApiError(res.status, (body as {error?:{message?:string}})?.error?.message || '请求失败'); return body as Envelope<T>; }
+export const getDatasets=()=>api<Dataset[]>('/datasets');
+export const getVersions=(id:string)=>api<Version[]>(`/datasets/${id}/versions`);
+export const getLegacyDashboard=(version_id:string,scope?:string)=>api<LegacyDashboard>(`/legacy/dashboard?${params({version_id,scope})}`);
+export const getAging=(version_id:string)=>api<{records:AgingRecord[];}>(`/legacy/aging?${params({version_id})}`);
+export const getMwd=(version_id:string)=>api<MwdData>(`/legacy/mwd?${params({version_id})}`);
+export const getSource=(version_id:string)=>api<Source>(`/sources?${params({version_id})}`);
+export const getEvidence=(version_id:string,ref:string)=>api<Evidence>(`/evidence?${params({version_id,ref})}`);
+export const getSnapshots=(version_id:string)=>api<Snapshot[]>(`/inventory/snapshots?${params({version_id})}`);
+export const getExplore=(q:ExploreQuery)=>api<Explore>(`/inventory/explore?${params(q as Record<string,string|undefined>)}`);
+export const getItems=(q:ItemQuery)=>api<Items>(`/inventory/items?${params(q as Record<string,string|number|undefined>)}`);
+export type ManagementCatalog = {
+  metrics:{id:string;label:string;unit:string;aggregation_rule:string}[];
+  periods:{key:string;label:string;order:number;period_type:string;observation_type:string}[];
+  snapshot_aliases:{alias:string;snapshot_key:string;label:string;exact_date:string;ordinal:number}[];
+  business_lines:{id:string;label:string}[];
+  material_forms:{id:string;label:string}[];
+  risk_policies:{material_form:string;threshold_days:number|null;comparison:string|null;classification:string;label:string}[];
+  unit_policy:{currency:string;inventory_amount:string;detail_amount:string};
+  data_as_of:string; evidence_level:string;
+};
+export type ManagementPoint = {period_key:string;label:string;order:number;value:string|null;observation_type:string;exact_date?:string|null;period_type?:string|null;source_order?:number|null};
+export type ManagementReference = {reference_period_key:string|null;value:string|null;period_key:string|null;match_status:'matched'|'missing';gap:string|null;as_of?:string|null};
+export type ManagementCard = {metric_id:string;label:string;unit:string;actual:string|null;baseline:string|null;absolute_delta:string|null;relative_delta:string|null;target:ManagementReference;forecast:ManagementReference;series:ManagementPoint[];aggregation_rule:string;coverage_state:string;source_ref?:string|null};
+export type StructureMetric = 'turnover_days'|'point_inventory';
+export type StructureValue = {id:string;label:string;value:string|null;baseline:string|null;absolute_delta:string|null;relative_delta:string|null;share:string|null;share_status:'available'|'partial'|'zero_denominator'|'unavailable'|'not_applicable';coverage_state:string;current_coverage_state?:string;baseline_coverage_state?:string;source_refs:string[]};
+export type StructureHistory = {period_key:string;label:string;exact_date:string;snapshot_alias:string|null;value:string|null;coverage_state:string;source_refs:string[]};
+export type OverviewStructureData = {metric_id:StructureMetric;label:string;unit:string;value_source:string;aggregation_rule:string;share_applicability:string;analysis:{period_key:string;exact_date:string};baseline:{period_key:string;exact_date:string};scope_summary:StructureValue;form_options:(StructureValue & {selected:boolean})[];business_lines:(StructureValue & {history:StructureHistory[]})[];reconciliation:null|{detail_value:string|null;detail_unit:string;conversion_factor:string|null;converted_value:string|null;overview_fact_value:string|null;overview_unit:string;gap:string|null;status:string;source_refs:string[]}};
+export type ConclusionEvidence = {metric_id:string;entity_id:string;entity_label?:string;current:string|null;baseline:string|null;absolute_delta:string|null;relative_delta:string|null;unit:string;scope_id:string;material_form:string;current_period:string;baseline_period:string;source_refs:string[];amount_delta?:string|null;amount_direction?:'up'|'down'|'flat'|null;current_share?:string|null;baseline_share?:string|null;share_delta?:string|null;share_direction?:'up'|'down'|'flat'|null;target?:string|null;target_period?:string|null;gap?:string|null;coverage_state?:string;share_unit?:string};
+export type OverviewConclusions = {ruleset_id:string;max_items:number;items:{rule_id:string;rank:number;category:string;title:string;summary:string;condition:Record<string,unknown>;entities:{id:string;label:string}[];evidence:ConclusionEvidence[];drilldown:null|{page:string;query:Record<string,string>}}[]};
+export type ManagementOverview = {cards:ManagementCard[];structure?:OverviewStructureData;conclusions?:OverviewConclusions};
+export type ManagementAnalysis = {
+  selection:{current_alias:string;current_snapshot_key:string;current_date:string;baseline_alias:string;baseline_snapshot_key:string;baseline_date:string;business_line_id:string|null;material_form:string};
+  summary:{inventory_amount:string|null;baseline_inventory_amount:string|null;inventory_delta:string|null;over_180_amount:string|null;baseline_over_180_amount:string|null;over_180_delta:string|null;over_180_share:string|null;baseline_over_180_share:string|null;over_180_share_delta:string|null;policy_risk_amount:string|null;risk_evaluation:string;unit:string};
+  turnover_facts:{business_line_id:string;business_line_label:string;current:string|null;baseline:string|null;delta:string|null;unit:string;coverage_state:string}[];
+  amount_trend:{alias:string;snapshot_key:string;exact_date:string;value:string|null;unit:string;coverage_state:string}[];
+  over_180_trend:{alias:string;snapshot_key:string;exact_date:string;amount:string|null;share:string|null;unit:string;coverage_state:string}[];
+  material_form_breakdown:{key:string;label:string;inventory_amount:string|null;share:string|null;over_180_amount:string|null;policy_risk_amount:string|null;risk_evaluation:string}[];
+  business_line_breakdown:{key:string;label:string;inventory_amount:string|null;share:string|null;over_180_amount:string|null;coverage_state:string}[];
+  coverage:{current_unknown_amount_count:number;baseline_unknown_amount_count:number;current_state:string;baseline_state:string};
+};
+export type ManagementInventoryRow = {row_key:string;parent_key:string|null;level:'business_line'|'project'|'material_subclass';label:string;has_children:boolean;aging_amounts:Record<string,string|null>;aging_quantities:Record<string,string|null>;inventory_amount:string|null;quantity:string|null;quantity_unit:string|null;quantity_status:string;over_180_amount:string|null;policy_risk_amount:string|null;risk_evaluation:string;unknown_amount_count:number;coverage_state:string};
+export type ManagementInventoryTable = {resolved_snapshot:{alias?:string;exact_date?:string;[key:string]:unknown};totals:Omit<ManagementInventoryRow,'row_key'|'parent_key'|'level'|'label'|'has_children'> & {unit:string};rows:ManagementInventoryRow[];total:number;page:number;size:number};
+export type ManagementOverviewQuery = {version_id:string;scope_id?:string;material_form?:string;analysis_period?:string;baseline_period?:string;structure_metric?:StructureMetric};
+export type ManagementAnalysisQuery = {version_id:string;current_alias:string;baseline_alias:string;business_line_id?:string;material_form?:string};
+export type ManagementTableQuery = {version_id:string;snapshot_alias:string;business_line_id?:string;material_form?:string;risk_view?:'all'|'policy_hit'|'over_180'|'unclassified';search?:string;parent_key?:string;sort_by?:'inventory_amount'|'over_180_amount'|'quantity'|'name';sort_dir?:'asc'|'desc';page?:number;size?:number};
+export const getManagementCatalog=(version_id:string)=>api<ManagementCatalog>(`/management/catalog?${params({version_id})}`);
+export const getManagementOverview=(q:ManagementOverviewQuery)=>api<ManagementOverview>(`/management/overview?${params(q)}`);
+export const getManagementAnalysis=(q:ManagementAnalysisQuery)=>api<ManagementAnalysis>(`/management/analysis?${params(q)}`);
+export const getManagementInventoryTable=(q:ManagementTableQuery)=>api<ManagementInventoryTable>(`/management/inventory-table?${params(q)}`);
+export const managementExportUrl=(q:Omit<ManagementTableQuery,'parent_key'|'page'|'size'>)=>`${BASE}/management/export?${params(q)}`;
+export type Metric={id:string;label:string;unit:string}; export type TrendRow={scope:string;period:string;month_order:number;sources?:Record<string,string>;[key:string]:unknown};
+export type LegacyDashboard={periods:{id:string;label:string;order:number}[];scopes:string[];metrics:Metric[];rows:TrendRow[];checks?:Check[];reconciliations?:unknown[]};
+export type Check={id:string;category:string;evidence:string;impact:string;recommendation:string;status:string;source:string};
+export type AgingRecord={snapshot?:string;form:string;scope:string;category:string;buckets:{label:string;value:string|null;unit:string;source?:string}[];total:string|null;old_total:string|null;reconciliation_gap?:string|null;unit?:string;sources?:Record<string,string>};
+export type MwdRow={scope:string;item:string;inventory:string|null;stock:string|null;po:string|null;total:string|null;provision:string|null;unit:string;note?:string;sources?:Record<string,string>}; export type MwdData={summary:MwdRow[];details:MwdRow[];note?:string};
+export type Source={id:string;filename:string;sha256:string;evidence_level:string;metadata?:Record<string,unknown>;limitations?:string[]}; export type Evidence={ref:string;sheet?:string;row?:number;image?:number;original_cell?:string;original_row?:number;unit?:string;raw_value?:string;raw_text?:string;note?:string};
+export type Snapshot={id:string;label:string;exact_date:string;ordinal:number;row_count:number};
+export type ExploreQuery={version_id:string;snapshot_id:string;baseline_id?:string;group_by:string;pdt?:string;customer?:string;project?:string;material_category?:string;search?:string}; export type Explore={current_total:string|null;baseline_total:string|null;delta:string|null;unit:string;unknown_count:number;baseline_unknown_count?:number;groups:{key:string;current:string|null;baseline:string|null;delta:string|null;share:string|null}[];trend:{snapshot_id:string;label:string;total:string|null}[];filters:{pdt:string[];customer:string[];project:string[];material_category:string[]}};
+export type ItemQuery=ExploreQuery & {page:number;size:number}; export type Item={id:string;record_key:string;material_code:string;material_description:string;pdt:string|null;customer:string|null;project:string|null;material_category:string|null;subinventory_code:string|null;quantity:string|null;unit_cost:string|null;total_cost_amount:string|null}; export type Items={items:Item[];total:number;page:number;size:number};

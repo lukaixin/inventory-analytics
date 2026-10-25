@@ -1,0 +1,21 @@
+name: inventory-v7
+services:
+  db:
+    profiles: ["future-postgres"]
+    image: postgres:17.11
+    environment:
+      POSTGRES_USER: v7_app
+      POSTGRES_PASSWORD: ${PG_APP_PASSWORD:?Set PG_APP_PASSWORD in private .env}
+      POSTGRES_DB: inventory_v7
+    ports:
+      - "127.0.0.1:55438:5432"
+    volumes:
+      - inventory_v7_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U v7_app -d inventory_v7"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+volumes:
+  inventory_v7_pg:

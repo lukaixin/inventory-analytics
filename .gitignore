@@ -1,0 +1,28 @@
+.env
+.env.*
+!.env.example
+.venv/
+.runtime/
+.qa/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+dist/
+data/private/
+# Local audit material includes screenshots, exports, source backups and machine paths.
+# Repository-safe requirements and handoff summaries live in docs/.
+evidence/
+*.tsbuildinfo
+data/raw/
+data/imports/
+data/production/
+*.parquet
+*.xlsx
+*.xls
+*.csv
+*.pem
+*.key
+*.p12
+*.duckdb
+*.duckdb.wal
