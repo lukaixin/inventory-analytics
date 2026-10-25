@@ -95,4 +95,7 @@ QA与Final Gate均PASS WITH FINDINGS，Root批准本地结构与候选规则。6
 授权：用户明确新建GitHub工程、推送源码与AGENTS，并补真实接入/mock退场指南；用户随后明确本次保留演示。Doc Worker独占REAL_DATA_ONBOARDING，Root整理源码边界与文档链接，机械测试修复由Worker完成（FastWorker模型不可用后改用通用Worker，不影响最终工作）。独立QA审查Gitindex、私有资料和文档。78基础源码文件均经过暂存检查；干净导出迁移+27passed/1skip、npmci/build通过；私有历史不分发所以source-specific测试skip。所有源码/说明准备好后才创建私有远端与push，无须重复请求已授权发布许可。
 
 ### GH CLOSE
-独立QA与Final Gate均PASS WITH FINDINGS。用户授权范围内已创建lukaixin/yuantu-inventory，GitHub读回确认PRIVATE/main；首次源码commit bc56b749f32ef891475c741db159f524073eeb44与远端一致。79文件含三级AGENTS、真实接入与mock退场指南；原始/私有数据、配置、运行库、PG资产及本机evidence未上传。当前演示保留；PG/生产/真实接入均未冒称完成。后续关闭状态文档提交与远端SHA再验证由Root完成，报告保存在ignored evidence。未创建无关PR/消息/定时任务，未更新全局记忆。
+独立QA与Final Gate均PASS WITH FINDINGS。用户授权范围内已创建lukaixin/inventory-analytics，GitHub读回确认PRIVATE/main；首次源码commit bc56b749f32ef891475c741db159f524073eeb44与远端一致。79文件含三级AGENTS、真实接入与mock退场指南；原始/私有数据、配置、运行库、PG资产及本机evidence未上传。当前演示保留；PG/生产/真实接入均未冒称完成。后续关闭状态文档提交与远端SHA再验证由Root完成，报告保存在ignored evidence。未创建无关PR/消息/定时任务，未更新全局记忆。
+
+### OSS INTAKE / QA
+用户授权中性仓库名及公开开源，并明确MIT。先在PRIVATE状态更名inventory-analytics，更新origin；Worker仅改页面/API可见名称和npm根元数据，build/compile通过且依赖锁定未变。Root同步README/AGENTS/文档链接、去除当前树项目品牌标签并准备标准MITLICENSE，真实/私有/runtime/evidence仍排除。公开前QA检查当前差异及原提交敏感内容，不做无授权历史重写。

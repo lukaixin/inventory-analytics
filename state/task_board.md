@@ -26,3 +26,6 @@
 | GH-T01 | fast_execution | low | no | backend | clone_test_fix | github_publication_qa | DONE | 私有历史不分发 | 缺可选历史测试明确skip |
 | GH-Q01 | independent_review | high | no | root | github_publication_qa | final_reviewer | DONE | GH-D01,T01 | PASS WITH FINDINGS |
 | GH-G01 | independent_review | medium | no | root | v6_final_gate | root | DONE | GH-Q01 | PASS WITH FINDINGS，私有仓库已推送并读回验证 |
+| OSS-B01 | fast_execution | low | no | root | neutral_branding | open_source_qa | DONE | 用户去企业项目名 | 页面/API/npm中性标识与MIT元数据 |
+| OSS-Q01 | independent_review | high | no | root | open_source_qa | final_reviewer | DONE | OSS-B01 | PASS WITH FINDINGS，当前树无旧标识/私有运行资料 |
+| OSS-G01 | independent_review | medium | no | root | open_source_gate | root | IN_REVIEW | OSS-Q01 | 公开前门禁 |

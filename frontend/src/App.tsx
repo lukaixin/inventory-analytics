@@ -324,7 +324,7 @@ function LegacyWorkspace() {
       <aside className="sidebar">
         <header className="top">
           <div>
-            <p className="eyebrow">远途 · 库存分析</p>
+            <p className="eyebrow">库存分析工作台</p>
             <h1>库存健康看板</h1>
             <p className="subtitle">按数据版本追溯库存趋势、构成与来源</p>
           </div>
@@ -1769,7 +1769,7 @@ export function App() {
   const management = datasets.find((item) => item.kind === "management_demo");
   return <main className="management-shell">
     <header className="management-topbar">
-      <div><p>远途 · 库存管理</p><h1>库存管理驾驶舱</h1></div>
+      <div><p>Inventory Analytics</p><h1>库存管理驾驶舱</h1></div>
       <div className="management-topbar-meta"><Badge tone="orange">合成管理演示</Badge><span>本地 DuckDB · 全范围</span></div>
     </header>
     <nav className="management-nav" aria-label="库存管理主导航">

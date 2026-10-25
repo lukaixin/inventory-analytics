@@ -15,7 +15,7 @@ from .models import DatasetSeries, DatasetVersion, ImportBatch
 from .services import batch_view, commit_batch, csv_export, evidence_for_version, explore, export_rows, inventory_items, legacy_aging, legacy_dashboard, legacy_mwd, preview, snapshots, source_for_version, template
 from .management import analysis as management_analysis, catalog as management_catalog, inventory_table as management_inventory_table, management_export, overview as management_overview
 
-app=FastAPI(title="远图库存健康与风险看板 V7 API",version="1.0")
+app=FastAPI(title="Inventory Analytics API",version="1.0")
 def ok(data, meta=None): return {"data":data,"meta":meta or {}}
 def fail(status,code,message,details=None): raise HTTPException(status_code=status,detail={"code":code,"message":message,"details":details or {},"trace_id":str(uuid.uuid4())})
 @app.exception_handler(HTTPException)

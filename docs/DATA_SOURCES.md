@@ -13,7 +13,7 @@
 914ba7517aa89e695ee7bdcb794177b5a10dd30b5dc9b02c003fd3a056c695eb
 ```
 
-原始来源工作簿为 `../outputs/01a07a11-32be-7dc2-8130-b6254512ec90/远途库存_原始资料拼接与核对初稿.xlsx`。本轮重新计算工作簿 SHA256，与 JSON 的 `metadata.source_sha256` 一致：
+原始来源工作簿为本地私有历史转录资料，不随开源仓库分发。本轮重新计算工作簿 SHA256，与 JSON 的 `metadata.source_sha256` 一致：
 
 ```text
 2afbe9b3cdd20fbb203a28881370d30d8744f3f62ab7eb6f992eb9675bca832f

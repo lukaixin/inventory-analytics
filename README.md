@@ -1,6 +1,6 @@
-# 远图库存健康与风险看板 · V7
+# Inventory Analytics
 
-私有仓库：[lukaixin/yuantu-inventory](https://github.com/lukaixin/yuantu-inventory)，默认分支`main`。
+库存分析工作台 · V7。开源仓库：[lukaixin/inventory-analytics](https://github.com/lukaixin/inventory-analytics)，默认分支`main`，采用[MIT许可证](LICENSE)。
 
 独立Server-first小应用：浏览器 → FastAPI → 本地DuckDB。默认工作区为趋势总览、明细分析、库存数据表；历史转录、MWD、库存探索和版本管理保留在来源与专题中。不依赖V6代码。
 

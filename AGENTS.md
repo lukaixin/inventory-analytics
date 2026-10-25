@@ -35,6 +35,6 @@ Run backend pytest against isolated temporary DuckDB files, frontend `npm run bu
 
 ## 仓库交接与真实数据接入（2026-10-25）
 
-用户已授权新建GitHub私有仓库并推送本工程及AGENTS。当前演示继续保留；真实接入时按`docs/REAL_DATA_ONBOARDING.md`逐项替换演示入口和数据提供方，再移除默认mock展示。该授权不包含未来生产部署、公开仓库或上传企业真实数据。
+用户已授权创建并推送本工程及AGENTS，后续明确要求将仓库更名为中性名称并开源，许可证选择MIT。仓库为`lukaixin/inventory-analytics`。当前演示继续保留；真实接入时按`docs/REAL_DATA_ONBOARDING.md`逐项替换演示入口和数据提供方，再移除默认mock展示。授权不包含未来生产部署或上传企业真实数据。
 
 新智能体先读README和真实接入文档。真实数据、原图/工作簿、数据库/备份、日志、密钥、`.env`及本机`evidence/`不得进入Git。仓库中的data文件是可复现测试/演示夹具；保留其合成标识。不得只改证据等级、单位或标签来冒充真实接入，也不得删除历史版本/休眠PG资产。历史evidence路径仅是本机验收档案，跨机器使用docs中的摘要与可重跑检查。
