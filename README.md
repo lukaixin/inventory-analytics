@@ -1,5 +1,7 @@
 # 远图库存健康与风险看板 · V7
 
+私有仓库：[lukaixin/yuantu-inventory](https://github.com/lukaixin/yuantu-inventory)，默认分支`main`。
+
 独立Server-first小应用：浏览器 → FastAPI → 本地DuckDB。默认工作区为趋势总览、明细分析、库存数据表；历史转录、MWD、库存探索和版本管理保留在来源与专题中。不依赖V6代码。
 
 ## 新智能体从这里开始
@@ -37,7 +39,7 @@ Python3.13、FastAPI、SQLAlchemy、Alembic、DuckDB1.5.6 / duckdb-engine；Reac
 
 ## 本机运行（PowerShell 7）
 
-在inventory-v7目录执行。当前依赖、数据库、样例和前端构建已就绪：
+在仓库根目录执行。新克隆先完成下一节初始化；本机已有依赖、数据库、样例和前端构建：
 
 ```powershell
 pwsh -File scripts/start.ps1

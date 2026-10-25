@@ -48,4 +48,4 @@ UI-P01最终独立复核：PASS（evidence/ui-polish/independent-review.md）。
 2026-10-25 本轮最终判定：QA及Final Gate均PASS WITH FINDINGS，Root批准APPROVE_LOCAL_V6_CONTENT_RECONSTRUCTION。无本地演示阻断项；服务8170保留运行，验收浏览器已关闭。正式数据/PG/生产验收仍未开展。
 
 ## 2026-10-25 GitHub首次移交
-用户授权新建GitHub工程并推送，明确这次继续保留演示；真实接入后按交接清单移除正式路径mock。新增REAL_DATA_ONBOARDING与REQUIREMENTS_EVIDENCE、仓库验证摘要，根/模块AGENTS随源码移交；忽略所有本地evidence、配置、运行库、真实资料及备份。干净暂存源码导出中迁移、27passed/1可选历史skip、npmci/build通过。远端创建及推送待独立复核后执行。
+用户授权新建GitHub工程并推送，明确这次继续保留演示；真实接入后按交接清单移除正式路径mock。新增REAL_DATA_ONBOARDING与REQUIREMENTS_EVIDENCE、仓库验证摘要，根/模块AGENTS随源码移交；忽略所有本地evidence、配置、运行库、真实资料及备份。干净暂存源码导出中迁移、27passed/1可选历史skip、npmci/build通过。独立QA及Final Gate均PASS WITH FINDINGS。已创建并推送私有仓库https://github.com/lukaixin/yuantu-inventory，默认main；初始源码提交bc56b749f32ef891475c741db159f524073eeb44。远端79文件及三级AGENTS/交接文档齐全，未包含私有/运行资料。

@@ -1,8 +1,8 @@
 {
   "project": "inventory-v7",
   "phase": "github-private-repository-handoff",
-  "state": "FINAL_GATE",
-  "status": "IN_REVIEW",
+  "state": "CLOSE",
+  "status": "COMPLETED",
   "frozen_contracts": [
     "docs/V6_RECONSTRUCTION_CONTRACT.md",
     "docs/DATA_CONTRACT.md",
@@ -15,9 +15,7 @@
     "../outputs",
     "../work"
   ],
-  "active_tasks": [
-    "GH-G01 final publication gate"
-  ],
+  "active_tasks": [],
   "open_findings": [
     {
       "id": "Q01-F03",
@@ -37,10 +35,12 @@
     }
   ],
   "repair_round": 3,
-  "last_gate": "GH_QA_PASS_WITH_FINDINGS",
-  "next_allowed_action": "Create private remote and push after final gate",
+  "last_gate": "GH_FINAL_PASS_WITH_FINDINGS",
+  "next_allowed_action": "Clone repository and follow REAL_DATA_ONBOARDING with authorized private source data; demo remains enabled",
   "database": "DuckDB",
   "future_database": "PostgreSQL",
   "protected_files_verified": 142,
-  "delivery_decision": "PENDING_PRIVATE_REPOSITORY_PUBLICATION"
+  "delivery_decision": "APPROVE_PRIVATE_GITHUB_HANDOFF",
+  "repository_url": "https://github.com/lukaixin/yuantu-inventory",
+  "branch": "main"
 }

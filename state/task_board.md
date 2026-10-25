@@ -25,4 +25,4 @@
 | GH-D01 | domain_execution | medium | no | root | real_data_handoff | github_publication_qa | DONE | 用户指令 | 真实数据接入/mock退场指南 |
 | GH-T01 | fast_execution | low | no | backend | clone_test_fix | github_publication_qa | DONE | 私有历史不分发 | 缺可选历史测试明确skip |
 | GH-Q01 | independent_review | high | no | root | github_publication_qa | final_reviewer | DONE | GH-D01,T01 | PASS WITH FINDINGS |
-| GH-G01 | independent_review | medium | no | root | v6_final_gate | root | IN_REVIEW | GH-Q01 | 私有仓库推送前门禁 |
+| GH-G01 | independent_review | medium | no | root | v6_final_gate | root | DONE | GH-Q01 | PASS WITH FINDINGS，私有仓库已推送并读回验证 |
